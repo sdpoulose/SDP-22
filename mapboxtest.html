@@ -6,58 +6,23 @@
     <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
     <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js"></script>
     <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
-    <link href="./style.css" type="text/css" rel="stylesheet">
+    <style>
+	   body { margin: 0; padding: 0; }
+	   #map { position: absolute; top: 0; bottom: 0; width: 100%; }
+    </style>
 </head>
 <body>
-    <div id="map"></div>
-    <div class='map-overlay' id='features'><h2>US Opioid Epidemic Rate</h2><div id='pd'><p>Hover over a state!</p></div></div>
-    <div class='map-overlay' id='legend'></div>
-    <script>
-	   mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNlc3l1IiwiYSI6ImNrODR1bW5kNDAwNHUzbnBmd3ZvNTFsYXEifQ.Xs53gVcHl1t7uqj4eGxqKg';
-        var map = new mapboxgl.Map({
-            container: 'map', // container id
-            style: 'mapbox://styles/francesyu/ck8kc24se0mra1inunno53k8v', // stylesheet location
-        });
-        map.on('load', function() {
-            
-            var layers = ['0-14.50', '14.50-15.00', '15.00-15.25', '15.25-15.50', '15.50-15.75', '15.75+'];
-            var colors = ['#B9F9FE', '#97DFF0', '#75C5E3', '#54ABD5', '#3291C8', '#1177BB'];
-            
-            for (i = 0; i < layers.length; i++) {
-                var layer = layers[i];
-                var color = colors[i];
-                var item = document.createElement('div');
-                var key = document.createElement('span');
-                key.className = 'legend-key';
-                key.style.backgroundColor = color;
-
-                var value = document.createElement('span');
-                value.innerHTML = layer;
-                item.appendChild(key);
-                item.appendChild(value);
-                legend.appendChild(item);
-            }
-            
-            map.on('mousemove', function(e) {
-                var states = map.queryRenderedFeatures(e.point, {
-                    layers: ['predicted2020-statedata-18ynkn']
-                });
-
-                if (states.length > 0) {
-                    document.getElementById('pd').innerHTML =
-                        '<h3><strong>' + states[0].properties.name
-                        + '</strong></h3><p><strong><em>Predicted rate </strong>'
-                        + states[0].properties.predicted
-                        + '</em></p><p><strong><em>Real rate </strong>'
-                        + states[0].properties.real + '</em></p>';
-                } else {
-                    document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';
-                }
-            });
-            
-            map.getCanvas().style.cursor = 'default';
-            map.fitBounds([[-133.2421875, 16.972741], [-47.63671875, 52.696361]]);
-        });
-    </script>
+<div id="map"></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNlc3l1IiwiYSI6ImNrODR1bW5kNDAwNHUzbnBmd3ZvNTFsYXEifQ.Xs53gVcHl1t7uqj4eGxqKg';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/francesyu/ck8gxhyml0o821inxq8o39jha', // stylesheet location
+    });
+    map.on('load', function() {
+        map.getCanvas().style.cursor = 'default';
+        map.fitBounds([[-133.2421875, 16.972741], [-47.63671875, 52.696361]]);
+    });
+</script>
 </body>
 </html>
