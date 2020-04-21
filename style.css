@@ -1,3 +1,7 @@
+body {
+    font-family: "Raleway", Arial, sans-serif
+}
+
 a{
     text-decoration: none;
     color: white;
@@ -54,7 +58,7 @@ a{
 }
 
 .navbar {
-    background-color:black;
+    background-color: #000E2F;
     overflow: hidden;
     width: 100%;
     position: fixed;
@@ -78,11 +82,11 @@ a{
   
   .navbar a:hover {
     background-color: white;
-    color: black;
+    color: #000E2F;
   }
   
   .navbar a.active {
-    background-color: red;
+    background-color: #7C878E;
     color: white;
   }
 
@@ -370,17 +374,6 @@ a{
     position: absolute;
     right: 20px;
 }
-
-.slider {
-    width: 100%;
-    display: flex;
-    overflow-x: auto;
-  }
-  .slide {
-    width: 100%;
-    flex-shrink: 0;
-    height: 100%;
-  }
 
 
 
