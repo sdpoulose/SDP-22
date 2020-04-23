@@ -11,7 +11,7 @@
 <body>
 <div id="map"></div>
 <div class='map-overlay' id='features'><h2>US Opioid Epidemic Rate</h2><div id='pd'><p>Hover over a state!</p></div></div>
-<div class='map-overlay' id='legend'></div>
+<div class='map-overlay' id='legend'><h3>Predicted Death Rate</h3></div>
 <script>
 	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNlc3l1IiwiYSI6ImNrODR1bW5kNDAwNHUzbnBmd3ZvNTFsYXEifQ.Xs53gVcHl1t7uqj4eGxqKg';
     var map = new mapboxgl.Map({
@@ -20,7 +20,7 @@
     });
     map.on('load', function() {
         
-        var layers = ['0-14.50', '14.50-15.00', '15.00-15.25', '15.25-15.50', '15.50-15.75', '15.75+'];
+        var layers = ['< 14.50', '14.50 - 15.00', '15.00 - 15.25', '15.25 - 15.50', '15.50 - 15.75', '> 15.75'];
             var colors = ['#B9F9FE', '#97DFF0', '#75C5E3', '#54ABD5', '#3291C8', '#1177BB'];
             
             for (i = 0; i < layers.length; i++) {
@@ -46,9 +46,9 @@
                 if (states.length > 0) {
                     document.getElementById('pd').innerHTML =
                         '<h3><strong>' + states[0].properties.name
-                        + '</strong></h3><p><strong><em>Predicted rate </strong>'
+                        + '</strong></h3><p><strong><em>Predicted Death Rate </strong>'
                         + states[0].properties.predicted
-                        + '</em></p><p><strong><em>Real rate </strong>'
+                        + '</em></p><p><strong><em>Actual Death Rate </strong>'
                         + states[0].properties.real + '</em></p>';
                 } else {
                     document.getElementById('pd').innerHTML = '<p>Hover over a state!</p>';

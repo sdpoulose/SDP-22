@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <title>Opioid Epidemic Modeling</title>
+    <meta name="viewport" content="initial-scale=1,maximum-scale=1,user-scalable=no" />
+    <script src="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.js"></script>
+    <link href="https://api.mapbox.com/mapbox-gl-js/v1.9.0/mapbox-gl.css" rel="stylesheet" />
+    <link href="style2.css" type="text/css" rel="stylesheet">
+</head>
+<body>
+<div id="map"></div>
+<div class='map-overlay' id='features'><h2>US Opioid Epidemic Rate</h2><div id='pd'><p>Hover over a county!</p></div></div>
+<div class='map-overlay' id='legend'><h3>Predicted Death Rate</h3></div>
+<script>
+	mapboxgl.accessToken = 'pk.eyJ1IjoiZnJhbmNlc3l1IiwiYSI6ImNrODR1bW5kNDAwNHUzbnBmd3ZvNTFsYXEifQ.Xs53gVcHl1t7uqj4eGxqKg';
+    var map = new mapboxgl.Map({
+        container: 'map', // container id
+        style: 'mapbox://styles/francesyu/ck9c8zqau09ht1ipm3tke5t0t', // stylesheet location
+    });
+    map.on('load', function() {
+
+        var layers = ['< 10.00', '10.00 - 14.00', '14.00 - 15.00', '15.00 - 16.00', '16.00 - 22.00', '> 22.00'];
+        var colors = ['#B9F9FE', '#97DFF0', '#75C5E3', '#54ABD5', '#3291C8', '#1177BB'];
+
+        for (i = 0; i < layers.length; i++) {
+            var layer = layers[i];
+            var color = colors[i];
+            var item = document.createElement('div');
+            var key = document.createElement('span');
+            key.className = 'legend-key';
+            key.style.backgroundColor = color;
+
+            var value = document.createElement('span');
+            value.innerHTML = layer;
+            item.appendChild(key);
+            item.appendChild(value);
+            legend.appendChild(item);
+        }
+
+        map.on('mousemove', function(e) {
+            var counties = map.queryRenderedFeatures(e.point, {
+                layers: ['countydata-2018-03rmrm']
+            });
+
+            if ((counties.length > 0) && (counties[0].properties.ACTUAL != 0)) {
+                document.getElementById('pd').innerHTML =
+                    '<h3><strong>' + counties[0].properties.NAME + ' ' + counties[0].properties.LSAD
+                    + '</strong></h3><p><strong><em>Actual Death Rate </strong>'
+                    + counties[0].properties.ACTUAL
+                    + '</em></p><p><strong><em>Predicted Death Rate </strong>'
+                    + counties[0].properties.PREDICTED + '</em></p>';
+            } else {
+                document.getElementById('pd').innerHTML = '<p>Hover over a county!</p>';
+            }
+        });
+
+        map.getCanvas().style.cursor = 'default';
+        map.fitBounds([[-133.2421875, 16.972741], [-47.63671875, 52.696361]]);
+    });
+</script>
+</body>
+</html>
