@@ -16,11 +16,11 @@
     
     <div class="banner"><center>
         <h1>Opioid Epidemic Mapping</h1>
-        <h2><i>A predictive look into the opioid crisis in the United States using machine learning</i></h2>
+        <h2><i>A predictive look into the United States opioid crisis</i></h2>
     </center></div>
         
     <div class="description">
-      <p>Insert project description here</p>
+      <p>As part of the University of Connecticut School of Engineering Senior Design Program, this project was sponsored by Cigna. The results of the project are exhibited in a series of predictive models estimating opioid death rate based on a number of social determinants.<br>For information about each map, see below.</p>
     </div>
       
     <div class="maps">
@@ -28,19 +28,19 @@
       <h2>State Map</h2>
       <iframe src="statedata_2020.html" height="500" width="70%"></iframe>
       </center>
-      <p class="description">Insert state map description here</p>
+      <p class="description">Shown above are real opioid death rates from 2016 given by the CDC, as well as predicted death rates per state for the year 2020. The map was generated using a k-nearest neighbor machine learning algorithm using five social determinants.</p>
       <br><br>
       <center>
       <h2>2013 County Map</h2>
       <iframe src="countydata_2013.html" height="500" width="70%"></iframe>
       </center>
-      <p class="description">Insert county map description here</p>
+      <p class="description">Shown above are real and generated opioid death rates for 2013. The real values were given by the CDC, and the predicted values were generated from a random forest machine learning algorithm using four social determinants. The model was trained on data from years 2011 and 2012.<br>	The years spanning 2009-2012 were used as training data and 2013 was the testing data. Compared to other subsets of data, this subset was found to have the best results. It is likely because the input variables were potentially more correlated to the death rate in earlier years than later years. The possible implication is that the opioid is more far-reaching in recent years, contributing to the increasingly high death rate.</p>
       <br><br>
       <center>
       <h2>2018 County Map</h2>
       <iframe src="countydata_2018.html" height="500" width="70%"></iframe>
       </center>
-      <p class="description">Insert county map description here</p>
+      <p class="description">Shown above are real and generated opioid death rates for 2018. The real values were given by the CDC, and the predicted values were generated from a random forest machine learning algorithm using four social determinants. The model was trained on data from years 2016 and 2017.<br>	The years spanning 2016-2017 were used as training data and 2018 was the testing data. Originally, 2009-2017 were to be used as training data, however 2016-2017 had the best performance for predicting 2018. It’s possible that there are factors in recent years that are more correlated with the death rate that the input features used do not capture.</p>
       <br><br>    
     </div>
   </body>
