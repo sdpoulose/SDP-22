@@ -1,12 +1,16 @@
-body {
+body{
     font-family: "Raleway", Arial, sans-serif
 }
 
-footer {
+footer{
     display: block;
     padding: 10px;
     width: 100%;
     background-color: #000E2F;
+}
+
+ul{
+    text-align: left;
 }
 
 .banner{
