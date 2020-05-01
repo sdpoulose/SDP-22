@@ -2,4 +2,6 @@
 
 A website to host an interactive opioid predictive model
 
-https://sdpoulose.github.io/SDP-22/
+Draft Website: https://sdpoulose.github.io/SDP-22/
+
+Completed Website: https://seniordesign22.github.io/
